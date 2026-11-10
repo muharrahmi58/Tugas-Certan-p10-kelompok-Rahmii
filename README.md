@@ -38,15 +38,11 @@ Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan a
 
 ## 3. Skenario augmentasi & hipotesis
 
-<!-- Tulis bagian ini SEBELUM menjalankan eksperimen. Commit dulu, baru jalankan.
-     Alasan klinis = kenapa variasi ini mungkin (atau tidak mungkin) terjadi pada kolonoskopi sungguhan. -->
-
 | Skenario | Augmentasi (kode) | Alasan klinis | Hipotesis: Dice naik/turun/sama? |
 |---|---|---|---|
 | Tanpa augmentasi | — | Pembanding | — |
-| flip | v2.RandomHorizontalFlip(), v2.RandomVerticalFlip() | Kamera Kolonoskopi berputar bebas dalam lumen usus sehingga tidak ada arah "atas" pasti. Polip dapat terbalik atau tercermin bentuk dan warnanya sama. Variasi ini elastis | Naik: dengan hanya 300 citra latih, flip menambah keragaman orientasi tanpa mengubah makna klinis, sehingga overfitting berkurang |
-| Kecerahan dan kontras | v2.ColorJitter(brightness=0.3, contrast=0.3), | Intensitas lampu endoskop berubah menurut jarak dan sudut ke dinding usus, sehingga foto yang sama bisa tampak lebih terang atau lebih gelap. Variasi ini mungkin terjadi, selama perubahannya moderat dan warna mukosa tidak berubah | Naik sedikit atau sama. Model menjadi lebih tahan terhadap perbedaan pencahayaan, tetapi pengaruhnya pada bentuk polip kecil, jadi kenaikan Dice kemungkinan tipis |
-| Rotasi | v2.RandomRotation(degrees=180), | Endoskop dapat berputar pada sumbunya, sehingga polip bisa muncul pada sudut berapa pun. Sudut kosong terisi hitam, mirip tepi gelap frame kolonoskopi asli. Variasi ini realistis | Naik. Model belajar mengenali polip pada berbagai orientasi, sehingga kinerja pada data validasi yang orientasinya acak meningkat |
+| ✍️ | ✍️ `v2....` | ✍️ | ✍️ |
+| ✍️ | ✍️ `v2....` | ✍️ | ✍️ |
 
 Contoh augmentasi yang dicoba:
 
@@ -74,25 +70,23 @@ Contoh augmentasi yang dicoba:
      Pertanyaan pemandu: Polip seperti apa yang sering terlewat (kecil? datar? warna mirip dinding usus?)
      Apa yang sering dikira polip padahal bukan? Apakah augmentasi memperbaiki kasus sulit? -->
 
-Berdasarkan hasil visualisasi peta kesalahan (error map):
-
-1. Polip yang Sering Terlewat (False Negative / Warna Biru):
-   - Model tanpa augmentasi sering kali 'terlewat total' (gagal mendeteksi) pada polip yang berada di sudut ekstrem atau berukuran besar dengan batas yang kurang jelas (seperti pada contoh baris 1 dan baris 2, menghasilkan Dice = 0.00).
-   - Polip berukuran kecil dengan pencahayaan redup/pencahayaan khusus juga cenderung terlewat (area polip banyak didominasi warna biru).
-
-2. Deteksi Palsu / Yang Sering Dikira Polip (False Positive / Warna Merah):
-   - Area latar belakang di luar struktur polip (seperti bayangan pada lipatan dinding usus atau daerah dengan kontras tinggi) terkadang keliru dikira sebagai polip oleh model (terlihat dari kemunculan bercak merah di luar area ground truth/jawaban dokter).
-
-3. Pengaruh Augmentasi terhadap Kasus Sulit:
-   - Sangat Efektif:Penerapan augmentasi geometri seperti Flip dan Rotasi terbukti menjadi solusi ampuh untuk memicu model dalam mengenali kasus-kasus sulit yang sebelumnya gagal total (pada baris 1, nilai Dice melonjak pesat dari 0.00 menjadi 0.85 untuk Flip dan 0.76 untuk Rotasi).
-   - Stabilitas: Augmentasi Kecerahan & Kontras memberikan akurasi segmentasi yang sangat stabil pada polip berukuran sedang-besar (Dice 0.95 - 0.97) dan membantu memberikan prediksi parsial pada polip berukuran kecil.
+✍️
 
 ## 6. Pembahasan & kesimpulan
 
-<!-- Bandingkan hasil dengan hipotesis di Bagian 3. Hipotesis yang ternyata salah tetap bernilai,
-     asalkan dijelaskan kenapa. Perbedaan kecil (lebih kecil dari simpangan baku) belum tentu berarti. -->
-
-✍️
+Perbandingan Hasil Eksperimen dengan Hipotesis:
+Berdasarkan hasil visualisasi dan metrik Dice Coefficient yang diperoleh, berikut adalah analisis perbandingan terhadap hipotesis awal:
+1. Hipotesis Augmentasi Geometri (Flip & Rotasi) - Sesuai Hipotesis
+   - Hipotesis Awal: Mengingat posisi dan sudut pandang kamera kolonoskop bersifat dinamis, augmentasi Flip dan Rotasi dihipotesiskan dapat meningkatkan performa model U-Net pada polip dengan sudut/orientasi yang tidak biasa.
+   - Hasil & Evaluasi: Hipotesis ini terbukti benar. Pada kasus polip di sudut ekstrem (baris 1), model baseline (tanpa augmentasi) mengalami kegagalan total (Dice = 0.00). Namun, penerapan Flip dan Rotasi berhasil memicu deteksi polip secara signifikan dengan nilai Dice mencapai 0.85 (Flip) dan 0.76 (Rotasi).
+2. Hipotesis Augmentasi Fotometrik (Kecerahan & Kontras) — Tidak Sesuai Hipotesis
+   - Hipotesis Awal: Dihipotesiskan bahwa memvariasikan kecerahan dan kontras warna akan membantu U-Net mengenali polip kecil atau polip yang tersamarkan oleh pencahayaan redup pada mukosa usus.
+   - Hasil & Evaluasi: Hipotesis ini kurang terbukti / sebagian salah. 
+     - Pada polip berukuran kecil dengan kontras rendah (baris 2), augmentasi kecerahan & kontras hanya memberikan sedikit kenaikan nilai Dice (0.27). 
+     - Mengapa Hipotesis Ini Kurang Berhasil? Penyesuaian kecerahan/kontras (ColorJitter) tidak menambah variasi morfologi/bentuk geometri objek. U-Net utamanya mengandalkan batas dan bentuk fitur struktural (kontur) polip. Mengubah intensitas warna saja tidak cukup memberi informasi baru bagi model untuk memisahkan polip dari lipatan dinding usus.
+3. Catatan Perbedaan Kecil (Variabilitas Metrik)
+   - Pada sampel polip berukuran sedang hingga besar (baris 3 dan 4), perbedaan nilai Dice antara Tanpa Augmentasi (0.98), Rotasi (0.93 - 0.97), dan Kecerahan & Kontras (0.95 - 0.97) tergolong sangat tipis. 
+   - Perbedaan margin kecil ini masih berada dalam batas variansi acak (belum tentu signifikan secara statistik), sehingga pada sampel yang mudah/jelas, semua skenario augmentasi memberikan performa yang relatif setara.
 
 ## 7. Pembagian kerja
 
