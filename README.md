@@ -48,15 +48,10 @@
 | Skenario | Augmentasi (kode) | Alasan klinis | Hipotesis: Dice naik/turun/sama? |
 |---|---|---|---|
 | Tanpa augmentasi | — | Pembanding | — |
-<<<<<<< HEAD
 | Flip | v2.RandomHorizontalFlip(), v2.RandomVerticalFlip() | Kamera Kolonoskopi berputar bebas dalam lumen usus sehingga tidak ada arah "atas" pasti. Polip dapat terbalik atau tercermin bentuk dan warnanya sama. Variasi ini elastis | Naik: dengan hanya 300 citra latih, flip menambah keragaman orientasi tanpa mengubah makna klinis, sehingga overfitting berkurang |
 | Kecerahan dan kontras | v2.ColorJitter(brightness=0.3, contrast=0.3), | Intensitas lampu endoskop berubah menurut jarak dan sudut ke dinding usus, sehingga foto yang sama bisa tampak lebih terang atau lebih gelap. Variasi ini mungkin terjadi, selama perubahannya moderat dan warna mukosa tidak berubah | Naik sedikit atau sama. Model menjadi lebih tahan terhadap perbedaan pencahayaan, tetapi pengaruhnya pada bentuk polip kecil, jadi kenaikan Dice kemungkinan tipis |
 | Rotasi | v2.RandomRotation(degrees=180), | Endoskop dapat berputar pada sumbunya, sehingga polip bisa muncul pada sudut berapa pun. Sudut kosong terisi hitam, mirip tepi gelap frame kolonoskopi asli. Variasi ini realistis | Naik. Model belajar mengenali polip pada berbagai orientasi, sehingga kinerja pada data validasi yang orientasinya acak meningkat |
-=======
-| ✍️ | ✍️ `v2....` | ✍️ | ✍️ |
-| ✍️ | ✍️ `v2....` | ✍️ | ✍️ |
 
->>>>>>> 20428ea (menjawab pertanyaan 1)
 Contoh augmentasi yang dicoba:
 
 ![Contoh augmentasi](hasil/augmentasi_flip.png)
