@@ -74,7 +74,18 @@ Contoh augmentasi yang dicoba:
      Pertanyaan pemandu: Polip seperti apa yang sering terlewat (kecil? datar? warna mirip dinding usus?)
      Apa yang sering dikira polip padahal bukan? Apakah augmentasi memperbaiki kasus sulit? -->
 
-✍️
+Berdasarkan hasil visualisasi peta kesalahan (error map):
+
+1. Polip yang Sering Terlewat (False Negative / Warna Biru):
+   - Model tanpa augmentasi sering kali 'terlewat total' (gagal mendeteksi) pada polip yang berada di sudut ekstrem atau berukuran besar dengan batas yang kurang jelas (seperti pada contoh baris 1 dan baris 2, menghasilkan Dice = 0.00).
+   - Polip berukuran kecil dengan pencahayaan redup/pencahayaan khusus juga cenderung terlewat (area polip banyak didominasi warna biru).
+
+2. Deteksi Palsu / Yang Sering Dikira Polip (False Positive / Warna Merah):
+   - Area latar belakang di luar struktur polip (seperti bayangan pada lipatan dinding usus atau daerah dengan kontras tinggi) terkadang keliru dikira sebagai polip oleh model (terlihat dari kemunculan bercak merah di luar area ground truth/jawaban dokter).
+
+3. Pengaruh Augmentasi terhadap Kasus Sulit:
+   - Sangat Efektif:Penerapan augmentasi geometri seperti Flip dan Rotasi terbukti menjadi solusi ampuh untuk memicu model dalam mengenali kasus-kasus sulit yang sebelumnya gagal total (pada baris 1, nilai Dice melonjak pesat dari 0.00 menjadi 0.85 untuk Flip dan 0.76 untuk Rotasi).
+   - Stabilitas: Augmentasi Kecerahan & Kontras memberikan akurasi segmentasi yang sangat stabil pada polip berukuran sedang-besar (Dice 0.95 - 0.97) dan membantu memberikan prediksi parsial pada polip berukuran kecil.
 
 ## 6. Pembahasan & kesimpulan
 
