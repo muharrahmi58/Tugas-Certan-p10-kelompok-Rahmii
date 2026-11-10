@@ -23,7 +23,14 @@
 
 ## 1. Pertanyaan
 
-Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan augmentasi apa yang tidak? Kenapa?
+ Analisis Efektivitas Augmentasi Data pada Model U-Net
+1. Augmentasi yang Membantu (Sangat Efektif): Flip (Pencerminan) dan Rotasi, Mengapa Efektif?
+  -Variasi Orientasi Spasial: Kamera kolonoskop secara alami dapat berputar dan mengambil sudut pandang dari berbagai arah di dalam saluran usus. Augmentasi geometri seperti Flip dan Rotasi melatih model U-Net agar bersifat invariant (tidak tergantung) pada arah orientasi objek.
+  -Peningkatan drastis pada kasus sulit: Berdasarkan hasil eksperimen (seperti pada citra baris 1), model baseline (tanpa augmentasi) mengalami total failure (Dice = 0.00). Namun setelah diterapkan Flip (Dice = 0.85) dan Rotasi (Dice = 0.76), U-Net mampu mendeteksi polip dengan sangat presisi.
+2. Augmentasi yang Kurang Membantu / Terbatas: Kecerahan & Kontras (ColorJitter) Mengapa Kurang Efektif / Terbatas?
+  -Tidak Mengubah Fitur Bentuk (Morfologi): Polip ditandai oleh bentuk tonjolan spesifik pada dinding usus. Mengubah tingkat kecerahan atau kontras warna saja tidak memberikan informasi struktural/geometri baru bagi U-Net untuk mengenali polip yang posisinya tidak biasa atau tersembunyi di lipatan usus.
+  -Kurang Membantu Kasus Ekstrem: Pada polip berukuran kecil dengan kontras rendah (baris 2), augmentasi Kecerahan & Kontras hanya menaikkan nilai Dice sedikit (Dice = 0.27), dan tetap gagal mengenali polip besar pada orientasi sulit (baris 1, Dice = 0.00).
+  -Potensi Overfitting Warna: Variasi warna mukosa usus yang diubah secara ekstrem justru bisa memicu false positive jika kontras jaringan sekitar ikut bergeser secara tidak alami.
 
 ## 2. Data & pengaturan
 
@@ -41,9 +48,15 @@ Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan a
 | Skenario | Augmentasi (kode) | Alasan klinis | Hipotesis: Dice naik/turun/sama? |
 |---|---|---|---|
 | Tanpa augmentasi | — | Pembanding | — |
+<<<<<<< HEAD
 | Flip | v2.RandomHorizontalFlip(), v2.RandomVerticalFlip() | Kamera Kolonoskopi berputar bebas dalam lumen usus sehingga tidak ada arah "atas" pasti. Polip dapat terbalik atau tercermin bentuk dan warnanya sama. Variasi ini elastis | Naik: dengan hanya 300 citra latih, flip menambah keragaman orientasi tanpa mengubah makna klinis, sehingga overfitting berkurang |
 | Kecerahan dan kontras | v2.ColorJitter(brightness=0.3, contrast=0.3), | Intensitas lampu endoskop berubah menurut jarak dan sudut ke dinding usus, sehingga foto yang sama bisa tampak lebih terang atau lebih gelap. Variasi ini mungkin terjadi, selama perubahannya moderat dan warna mukosa tidak berubah | Naik sedikit atau sama. Model menjadi lebih tahan terhadap perbedaan pencahayaan, tetapi pengaruhnya pada bentuk polip kecil, jadi kenaikan Dice kemungkinan tipis |
 | Rotasi | v2.RandomRotation(degrees=180), | Endoskop dapat berputar pada sumbunya, sehingga polip bisa muncul pada sudut berapa pun. Sudut kosong terisi hitam, mirip tepi gelap frame kolonoskopi asli. Variasi ini realistis | Naik. Model belajar mengenali polip pada berbagai orientasi, sehingga kinerja pada data validasi yang orientasinya acak meningkat |
+=======
+| ✍️ | ✍️ `v2....` | ✍️ | ✍️ |
+| ✍️ | ✍️ `v2....` | ✍️ | ✍️ |
+
+>>>>>>> 20428ea (menjawab pertanyaan 1)
 Contoh augmentasi yang dicoba:
 
 ![Contoh augmentasi](hasil/augmentasi_flip.png)
@@ -53,12 +66,7 @@ Contoh augmentasi yang dicoba:
 
 <!-- Tempel isi hasil/ringkasan.md di sini. -->
 
-| Skenario | Dice (rata-rata ± sb) | IoU (rata-rata ± sb) | Dice tiap ulangan |
-|---|---|---|---|
-| Tanpa augmentasi | 0.662 ± 0.021 | 0.553 ± 0.021 | 0.632, 0.644, 0.669, 0.687, 0.680 |
-| Flip | 0.685 ± 0.010 | 0.577 ± 0.006 | 0.683, 0.699, 0.681, 0.669, 0.693 |
-| Kecerahan & kontras | 0.631 ± 0.016 | 0.531 ± 0.011 | 0.634, 0.661, 0.615, 0.621, 0.627 |
-| Rotasi | 0.697 ± 0.011 | 0.587 ± 0.015 | 0.692, 0.691, 0.691, 0.690, 0.718 |
+✍️ tempel tabel dari `hasil/ringkasan.md`
 
 ![Perbandingan Dice](hasil/perbandingan.png)
 
