@@ -137,4 +137,6 @@ Atau buka notebook di Google Colab (Runtime → Change runtime type → T4 GPU).
 
 - Jha, D., dkk. (2020). Kvasir-SEG: A Segmented Polyp Dataset. *MultiMedia Modeling (MMM 2020)*, 451–462.
 - Ronneberger, O., Fischer, P., & Brox, T. (2015). U-Net: Convolutional Networks for Biomedical Image Segmentation. *MICCAI*. arXiv:1505.04597.
-- ✍️ tambahkan referensi lain yang kalian pakai
+- Batlle, V. M., Montiel, J. M. M., Fua, P., & Tardós, J. D. (2023). LightNeuS: Neural Surface Reconstruction in Endoscopy Using Illumination Decline. Lecture notes in computer science, abs/2309.02777, 502-512. https://doi.org/10.1007/978-3-031-43999-5_48
+- Panula, T., Rosa, B. M. G., Anastasova, S., Kaisti, M., & Lo, B. P. L. (2025). Multi-Sensory System for Spatially Aware Colonoscopy. IEEE Transactions on Medical Robotics and Bionics, 7, 975-984. https://doi.org/10.1109/tmrb.2025.3573053
+- Mori, D., Katagiri, A., Onishi, Y., Yamazaki, Y., Higuchi, K., Suzuki, N., Kikuchi, K., Nakatani, S., Fujiwara, T., Inoki, K., Konda, K., Tojo, M., Yamamura, F., & Yoshida, H. (2025). Assessment of colorectal polyp detection along the short-axis direction of the intestinal lumen during colonoscopic observation: a retrospective study in Japan. Clinical Endoscopy, 59, 96-105. https://doi.org/10.5946/ce.2025.112
