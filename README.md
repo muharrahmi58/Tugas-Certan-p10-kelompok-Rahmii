@@ -106,7 +106,10 @@ Berdasarkan hasil visualisasi dan metrik Dice Coefficient yang diperoleh, beriku
 
 <!-- Siapa mengerjakan apa. Penilaian proses kerja dilihat dari riwayat commit tiap anggota. -->
 
-✍️
+1. Muharrahmi (Ketua) : Membuat github, merapikan struktur file, menambahkan anggota, menjalankan colab bagian 4, mengerjakan pembahasan dan kesimpulan bagian 6, menambahkan daftar pustaka atau referensi
+2. Rosa Verretina Pasaribu (Anggota): Mengerjakan bagian data dan pengaturan bagian 2, mengerjakan pertanyaan pada bagian 1, mengerjakan penggunaan AI bagian 8
+3. Elfrita Andriyanti Hutabarat : Menambahkan bagian skenario dan augmentasi bagian 3, mengerjakan analisa peta kesalahan bagian 5, menambahkan pembagian kerja bagian 7 
+
 
 ## 8. Penggunaan AI
 
