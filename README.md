@@ -117,7 +117,7 @@ Berdasarkan hasil visualisasi dan metrik Dice Coefficient yang diperoleh, beriku
      Contoh: "Claude Code (CLI) untuk menulis skenario augmentasi dan memperbaiki error di Bagian 4.
      Draf Bagian 6 ditulis sendiri, lalu dirapikan bahasanya dengan bantuan AI." -->
 
-✍️
+"Gemini untuk merapikan penyusunan kata pada bagian 1, 5, 6. Untuk Draf bagian 2 dan pemilihan skenario augmentasi ditulis sendiri, kemudian bahasanya dirapihkan oleh AI"
 
 ## Cara menjalankan ulang
 
