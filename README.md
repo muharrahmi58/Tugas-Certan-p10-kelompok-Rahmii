@@ -17,8 +17,8 @@
 
 | Nama | NIM | Username GitHub | Kontribusi utama |
 |---|---|---|---|
-| Muharrahmi | 123430058 |muharrahmi58| ✍️ misal: menjalankan eksperimen, menulis Bagian 3 |
-| Rosa Verettina Pasaribu  |123430089| rosaverettina-wq | ✍️ |
+| Muharrahmi | 123430058 |muharrahmi58| Membuat github, merapikan struktur file, menambahkan anggota, menjalankan colab bagian 4, mengerjakan pembahasan dan kesimpulan bagian 6, menambahkan daftar pustaka atau referensi dan menambahkan tabel bagian Hasil |
+| Rosa Verettina Pasaribu  |123430089| rosaverettina-wq | Mengerjakan bagian data dan pengaturan bagian 2, mengerjakan pertanyaan pada bagian 1, mengerjakan penggunaan AI bagian 8, menambah kontribusi utama |
 | Elfrita Andriyanti Hutabarat | 123430080 | elpritaelprita-web | Menambahkan bagian skenario dan augmentasi bagian 3, mengerjakan analisa peta kesalahan bagian 5, menambahkan pembagian kerja bagian 7 |
 
 ## 1. Pertanyaan
@@ -111,8 +111,8 @@ Berdasarkan hasil visualisasi dan metrik Dice Coefficient yang diperoleh, beriku
 
 <!-- Siapa mengerjakan apa. Penilaian proses kerja dilihat dari riwayat commit tiap anggota. -->
 
-1. Muharrahmi (Ketua) : Membuat github, merapikan struktur file, menambahkan anggota, menjalankan colab bagian 4, mengerjakan pembahasan dan kesimpulan bagian 6, menambahkan daftar pustaka atau referensi
-2. Rosa Verretina Pasaribu (Anggota): Mengerjakan bagian data dan pengaturan bagian 2, mengerjakan pertanyaan pada bagian 1, mengerjakan penggunaan AI bagian 8
+1. Muharrahmi (Ketua) : Membuat github, merapikan struktur file, menambahkan anggota, menjalankan colab dan menambahkan tabel bagian 4, mengerjakan pembahasan dan kesimpulan bagian 6, menambahkan daftar pustaka atau referensi
+2. Rosa Verretina Pasaribu (Anggota): Mengerjakan bagian data dan pengaturan bagian 2, mengerjakan pertanyaan pada bagian 1, mengerjakan penggunaan AI bagian 8, menambah kontribusi utama
 3. Elfrita Andriyanti Hutabarat : Menambahkan bagian skenario dan augmentasi bagian 3, mengerjakan analisa peta kesalahan bagian 5, menambahkan pembagian kerja bagian 7 
 
 
