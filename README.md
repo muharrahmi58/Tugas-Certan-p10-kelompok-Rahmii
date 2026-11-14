@@ -19,7 +19,7 @@
 |---|---|---|---|
 | Muharrahmi | 123430058 |muharrahmi58| ✍️ misal: menjalankan eksperimen, menulis Bagian 3 |
 | Rosa Verettina Pasaribu  |123430089| rosaverettina-wq | ✍️ |
-| Elfrita Andriyanti Hutabarat | 123430080 | elfrita10 | ✍️ |
+| Elfrita Andriyanti Hutabarat | 123430080 | elpritaelprita-web | Menambahkan bagian skenario dan augmentasi bagian 3, mengerjakan analisa peta kesalahan bagian 5, menambahkan pembagian kerja bagian 7 |
 
 ## 1. Pertanyaan
 
